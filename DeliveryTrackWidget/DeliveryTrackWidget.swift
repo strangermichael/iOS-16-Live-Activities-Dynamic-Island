@@ -136,14 +136,13 @@ struct LockScreenView: View {
     var context: ActivityViewContext<GroceryDeliveryAppAttributes>
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                VStack(alignment: .center) {
-                    Text(context.state.courierName + " is on the way!").font(.headline)
-                    Text("You ordered \(context.attributes.numberOfGroceyItems) grocery items.")
-                        .font(.subheadline)
-                    BottomLineView(time: context.state.deliveryTime)
-                }
-            }
+            Text("Grab")
+                .font(.title)
+                .foregroundColor(.green)
+            Text("Driver is on the way!").font(.headline)
+            Text("You ordered \(context.attributes.numberOfGroceyItems) grocery items.")
+                .font(.subheadline)
+            BottomLineView(time: context.state.deliveryTime)
         }.padding(15)
     }
 }
@@ -164,6 +163,8 @@ struct BottomLineView: View {
                     .overlay(Text(time, style: .timer).font(.system(size: 8)).multilineTextAlignment(.center))
             }
             Image("home-address")
+                .renderingMode(.template)
+                .foregroundColor(.blue)
         }
     }
 }
